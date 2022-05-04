@@ -1,0 +1,28 @@
+/**Create Table**/
+CREATE TABLE eStore (id INTEGER, item_name TEXT, Items_Sold INTEGER, Items_On_Hand INTEGER, Items_To_Order INTEGER);
+
+INSERT INTO eStore VALUES (1, "black_shirts", 5, 1, 5);
+INSERT INTO eStore VALUES (2, "black_shirts", 9, 1, 9);
+INSERT INTO eStore VALUES (3, "black_shirts", 7, 1, 7);
+INSERT INTO eStore VALUES (4, "black_shirts", 4, 1, 4);
+INSERT INTO eStore VALUES (5, "white_shirts", 5, 3, 5);
+INSERT INTO eStore VALUES (6, "white_shirts", 9, 3, 9);
+INSERT INTO eStore VALUES (7, "white_shirts", 7, 3, 7);
+INSERT INTO eStore VALUES (8, "white_shirts", 4, 3, 4);
+INSERT INTO eStore VALUES (9, "gray_shirts", 5, 1, 5);
+INSERT INTO eStore VALUES (10, "gray_shirts", 9, 3, 9);
+INSERT INTO eStore VALUES (11, "gray_shirts", 7, 5, 7);
+INSERT INTO eStore VALUES (12, "gray_shirts", 4, 8, 4);
+INSERT INTO eStore VALUES (13, "green_shirts", 5, 7, 5);
+INSERT INTO eStore VALUES (14, "green_shirts", 9, 2, 9);
+INSERT INTO eStore VALUES (15, "green_shirts", 7, 6, 7);
+INSERT INTO eStore VALUES (16, "green_shirts", 4, 5, 5);
+
+--See Data by Shirt Type
+SELECT * FROM eStore;
+
+--See Data in order of Items that Need to be Ordered (by Qty)
+SELECT * FROM eStore ORDER BY Items_To_Order;
+
+--See Qty of Shirts Still Available for Sale
+SELECT SUM(Items_On_Hand) AS Total_Items_On_Hand FROM eStore;
