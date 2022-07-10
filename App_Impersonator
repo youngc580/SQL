@@ -1,0 +1,36 @@
+/* This is a coding social application data display case example.*/
+/* The question presented was: What does the app's SQL look like? */
+/* What was intended was to explore a small snippet of data, and then demonstrate use of (a) ALTER TABLE, (b) UPDATE, and (c) DELETE (a single row of data).*/
+/* Output select statements were included so, upon executing a run of the code, the output tables would demonstrate the progression of the code objectives -- */
+/* -- the most noticeable being where the SELECT statement pulled the tabled data after deleting a single row.*/
+
+CREATE TABLE social_app (id INTEGER PRIMARY KEY AUTOINCREMENT,
+     first_name TEXT,
+     last_name TEXT,
+     age INTEGER)
+     ;
+     
+INSERT into social_app (first_name, last_name, age) VALUES ("Alpha", "Person1", 24);
+INSERT into social_app (first_name, last_name, age) VALUES ("Bravo", "Person2", 18);
+INSERT into social_app (first_name, last_name, age) VALUES ("Charlie", "Person3", 32);
+INSERT into social_app (first_name, last_name, age) VALUES ("Delta", "Person4", 33);
+
+SELECT * FROM social_app;
+
+ALTER TABLE social_app ADD emotion TEXT;
+
+SELECT * FROM social_app;
+
+UPDATE social_app SET emotion = "Motivated" WHERE id = 1; 
+UPDATE social_app SET emotion = "Excited" WHERE id = 2;
+UPDATE social_app SET emotion = "Flabbergasted" WHERE id = 3;
+UPDATE social_app SET emotion = "Empowered" WHERE id = 4;
+
+SELECT * FROM social_app;
+
+DELETE FROM social_app WHERE age = 18;
+
+SELECT * FROM social_app;
+
+
+
