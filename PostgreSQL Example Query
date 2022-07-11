@@ -1,0 +1,47 @@
+-- (PostgreSQL) Example Query
+-- Source: https://bit.io/CharlotteChaze/BreakIntoTech
+-- PLEASE NOTE: Commentary "--" was used to eliminate code inclusion during execution while progressing through the project.  Each query had executed as desired prior to declaring the lines of SQL as comment lines.
+
+--   TASK: Select statement joining 2 tables and giving each table an alias 
+--SELECT people.show_id, people.director, titles.title, titles.type 
+--  FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
+--  JOIN  "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+--  ON people.show_id = titles.show_id;
+
+-- TASK:: Identify how many movie titles exist in the database (Movies only, not TV Shows)
+--SELECT count(*) AS "Count"
+  --FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+  --WHERE type = 'Movie';
+
+-- TASK:: Identify when the most recent tv show and/or movie batch was added to the database.
+--SELECT max(date(date_added)) as "Most Recent Upload:" 
+  -- FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+-- TASK:: List all movies & tv shows in alphabetical order.
+--SELECT title FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+  --ORDER BY title ASC;
+
+-- TASK:: Identify the Director for the movie: Bright Star.
+--SELECT people.director AS "Director", titles.title AS "Movie_Title"
+--  FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
+--  LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+--  ON people.show_id = titles.show_id
+--  WHERE titles.title = 'Bright Star';
+
+-- TASK:: Subquery to identify the oldest movie - and the year it was made - in the database.
+--SELECT title, release_year 
+--FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+--WHERE type = 'Movie' 
+--AND 
+--release_year <= (SELECT MIN(release_year) 
+--FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+--WHERE type = 'Movie');
+
+-- TASK:: Alternative to identify the oldest movie - and the year it was made - in the database.
+-- NOTE: Required limiting results to populate desired data.
+SELECT title, release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+ORDER BY release_year ASC
+Limit 2;
+
